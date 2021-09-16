@@ -1,0 +1,9 @@
+language: java
+
+# command to install dependencies
+install:
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+# command to run tests
+script:
+  - curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz && tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /tmp/cdefense
+  - /tmp/cdefense scan --lang=java --project-name=Java_travis_CI_test --api-key=602c6be2-93b4-4d83-c67a-b282aeb35160
